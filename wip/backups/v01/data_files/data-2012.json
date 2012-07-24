@@ -1,0 +1,30 @@
+{
+	"name": "US_Budget",
+	"children": [
+		{
+			"name": "SSN",
+			"label": "Social Security",
+			"size": 25
+		},
+		{
+			"name": "EDU",
+			"label": "Education",
+			"size": 5
+		},
+		{
+			"name": "MED",
+			"label": "Medicare",
+			"size": 30
+		},
+		{
+			"name": "DEF",
+			"label": "Defense",
+			"size": 30
+		},
+		{
+			"name": "INS",
+			"label": "Income Security",
+			"size": 10
+		}
+	]
+}

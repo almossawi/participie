@@ -1,0 +1,300 @@
+<?php
+session_start();
+
+require("/var/www/vhosts/participie.com/httpdocs/config.php");
+require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<title>Participie - Help distribute the federal budget!</title>
+		<script type="text/javascript">
+			var data_file_to_load = "data_files/data-2012.json";
+		</script>
+		
+		<script src="../js/cookie.js" type="text/javascript"></script>
+		<script src="../js/json2.js" type="text/javascript"></script>
+		<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" />
+		<script src="../js/jquery.min.js" type="text/javascript"></script>
+		<script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="../css/styles.css" type="text/css" media="screen" charset="utf-8" />
+		<script type="text/javascript" src="../js/d3.js"></script>
+		<script type="text/javascript" src="../js/d3.layout.js"></script>
+		<script src="../js/jquery.corner.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="../css/styledButton.css" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="../css/uniform.default.css" type="text/css" media="screen" charset="utf-8" />
+		<script src="../js/jquery.uniform.js" type="text/javascript"></script>
+		<script src="../js/jquery.styledButton.js" type="text/javascript"></script>
+		<link href="http://fonts.googleapis.com/css?family=Mystery+Quest" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Junge" rel="stylesheet" type="text/css" />
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:300,600,700' rel='stylesheet' type='text/css'>
+		
+		<meta property="og:title" content="Participie.com - Help distribute the federal budget!" /> 
+		<meta property="og:description" content="How should the US budget be spent? Participate by resizing the federal pie using the sliders. Since the budget is constrained, you will need to reduce a slice before you can increase another one.  When you're done, submit your pie, so we can consolidate them into something meaningful for other citizens and for the 2012 presidential candidates!" /> 
+		<meta property="og:image" content="http://www.participie.com/thumb.jpg" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://www.participie.com/" />
+		<meta property="og:site_name" content="Participie.com" />
+		<meta property="fb:admins" content="542418566" />
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30696925-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<body style="background-image:url(../images/blackstrip.jpg);background-color:#e6e6dc;background-position:50% 0px">
+		<script type="text/javascript">
+			if ($.browser.msie && parseInt($.browser.version) < 9){
+				document.write("<div style='text-align:center;position:absolute;left:250px;top:100px;color:#3b3b3b'><span style='font-size:125%'>You're using a version of Internet Explorer older than 9.0.</span><br />Please <a href='http://windows.microsoft.com/en-US/internet-explorer/downloads/ie' style='color:black;text-decoration:underline'>upgrade</a> to the latest version of IE or access this page using Firefox, Chrome or Safari!</div>");
+			}
+		</script>
+		
+		<div id="sticky-anchor"></div>
+		<div id="sticky">
+			<!--<span style="color:white;position:absolute;right:140px;top:50px"><a href="bakery.php" style="color:white">The bakery</a></span>-->
+			<a href="../index.php"><img src="../images/logo.png" style="position:absolute;left:2px;top:2px;border:0" /></a>
+
+			<div id="top_nav_bar">
+				<a href="../index.php">home</a> &middot; <a href="../bakery.php">the bakery</a> &middot; <a href="/blog">blog</a> &middot; <a href="../about.php">about us</a>
+			</div>
+			
+			<label style="font-family: Georgia, Times, Arial;font-size:34px;color:white;position:absolute;left:360px;top:16px;width:500px;text-align:center">Federal Budget Pie
+			<br /><span id="bake_or_discuss"><a href="/wip/federalbudget/" class="not_selected">BAKE</a> &middot; <a href="/wip/federalbudget/discuss.php" class="selected">DISCUSS</a></span></label>
+		</div>
+		
+		<div style="float:left;width:450px">
+			<div id="budget_overview" style="width:1000px;height:1000px;position:relative;left:150px;top:0px;font-size:140%">
+					<h1 style="font-size:170%;position:relative;left:-10px;top:48px;color:#6a6a6a">Slices</h1>
+					<div style="width:100%;height:25px;border-bottom:1px dotted #989998">
+						<div style="font-family:Georgia,Times,Palatino;font-style:italic;font-size:16px;position:absolute;width:200px;height:100px;left:714px;margin-top:0;margin-bottom:0;padding-top:0;padding-bottom:0">current (2011)</div>
+						<div style="font-family:Georgia,Times,Palatino;font-style:italic;font-size:16px;position:absolute;width:200px;height:100px;left:870px;margin-top:0;margin-bottom:0;padding-top:0;padding-bottom:0">participie average</div>
+					</div>
+
+				<div id="fDEF_budget_function_container" class="container container_discuss">
+					<input type="hidden" name="fDEF_d" id="fDEF_d" class="d" value="1" />
+					<img src="../images/icons/DEF.png" style="width:16px;position:absolute;left:-20px;top:7px" alt="" />
+					<label id="fDEF" class="names_label_discuss">Defense</label>
+					<div id="fDEF_color" class="color_bar color_bar_discuss"></div>
+					<label id="fDEF_data" class="values_label values_label_discuss"></label>
+					<div id="fDEF_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
+					<label id="fDEF_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
+					<div id="fDEF_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
+				<?php $slice = "DEF"; $data = getDiscussionDataForSlice("def", "federalbudget"); ?>
+				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
+				</div><br /><br />
+				
+				<div id="fSCI_budget_function_container" class="container container_discuss">
+					<input type="hidden" name="fSCI_d" id="fSCI_d" class="d" value="1" />
+					<input type="hidden" name="d" value="222" />
+					<img src="../images/icons/SCI.png" style="width:14px;height:16px;position:absolute;left:-20px;top:7px" alt="" />
+					<label id="fSCI" class="names_label_discuss">Science, Space and Technology</label>
+					<div id="fSCI_color" class="color_bar color_bar_discuss"></div>
+					<label id="fSCI_data" class="values_label values_label_discuss"></label>
+					<div id="fSCI_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
+					<label id="fSCI_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
+					<div id="fSCI_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
+				<?php $slice = "SCI"; $data = getDiscussionDataForSlice("sci", "federalbudget"); ?>
+				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
+				</div><br /><br />
+				
+				<div id="fEDU_budget_function_container" class="container container_discuss">
+					<input type="hidden" name="fEDU_d" id="fEDU_d" class="d" value="1" />
+					<img src="../images/icons/EDU.png" style="width:12px;height:16px;position:absolute;left:-20px;top:7px" alt="" />
+					<label id="fEDU" class="names_label_discuss">Education</label>
+					<div id="fEDU_color" class="color_bar color_bar_discuss"></div>
+					<label id="fEDU_data" class="values_label values_label_discuss"></label>
+					<div id="fEDU_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
+					<label id="fEDU_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
+					<div id="fEDU_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
+				<?php $slice = "EDU"; $data = getDiscussionDataForSlice("edu", "federalbudget"); ?>
+				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
+				</div><br /><br />
+				
+				<div id="fENE_budget_function_container" class="container container_discuss">
+					<input type="hidden" name="fENE_d" id="fENE_d" class="d" value="1" />
+					<img src="../images/icons/ENE.png" style="width:12px;height:16px;position:absolute;left:-20px;top:7px" alt="" />
+					<label id="fENE" class="names_label_discuss">Energy</label>
+					<div id="fENE_color" class="color_bar color_bar_discuss"></div>
+					<label id="fENE_data" class="values_label values_label_discuss"></label>
+					<div id="fENE_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
+					<label id="fENE_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
+					<div id="fENE_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
+				<?php $slice = "ENE"; $data = getDiscussionDataForSlice("ene", "federalbudget"); ?>
+				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
+				</div><br /><br />
+
+				<div id="fTRA_budget_function_container" class="container container_discuss">
+					<input type="hidden" name="fTRA_d" id="fTRA_d" class="d" value="1" />
+					<img src="../images/icons/TRA.png" style="width:16px;height:15px;position:absolute;left:-20px;top:7px" alt="" />
+					<label id="fTRA" class="names_label_discuss">Transportation</label>
+					<div id="fTRA_color" class="color_bar color_bar_discuss"></div>
+					<label id="fTRA_data" class="values_label values_label_discuss"></label>
+					<div id="fTRA_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
+					<label id="fTRA_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
+					<div id="fTRA_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
+				<?php $slice = "TRA"; $data = getDiscussionDataForSlice("tra", "federalbudget"); ?>
+				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
+				</div><br /><br />
+								
+				<div id="fCRD_budget_function_container" class="container container_discuss">
+					<input type="hidden" name="fCRD_d" id="fCRD_d" class="d" value="1" />
+					<img src="../images/icons/CRD.png" style="width:16px;height:16px;position:absolute;left:-20px;top:7px" alt="" />
+					<label id="fCRD" class="names_label_discuss">Community and Regional Dev.</label>
+					<div id="fCRD_color" class="color_bar color_bar_discuss"></div>
+					<label id="fCRD_data" class="values_label values_label_discuss"></label>
+					<div id="fCRD_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
+					<label id="fCRD_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
+					<div id="fCRD_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
+				<?php $slice = "CRD"; $data = getDiscussionDataForSlice("crd", "federalbudget"); ?>
+				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
+				</div><br /><br />
+
+				<div id="fAGR_budget_function_container" class="container container_discuss">
+					<input type="hidden" name="fAGR_d" id="fAGR_d" class="d" value="1" />
+					<img src="../images/icons/AGR.png" style="width:16px;position:absolute;left:-20px;top:7px" alt="" />
+					<label id="fAGR" class="names_label_discuss">Agriculture</label>
+					<div id="fAGR_color" class="color_bar color_bar_discuss"></div>
+					<label id="fAGR_data" class="values_label values_label_discuss"></label>
+					<div id="fAGR_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
+					<label id="fAGR_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
+					<div id="fAGR_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
+				<?php $slice = "AGR"; $data = getDiscussionDataForSlice("agr", "federalbudget"); ?>
+				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
+				</div><br /><br />
+				
+				<div id="fHEL_budget_function_container" class="container container_discuss">
+					<input type="hidden" name="fHEL_d" id="fHEL_d" class="d" value="1" />
+					<img src="../images/icons/HEL.png" style="width:16px;position:absolute;left:-20px;top:7px" alt="" />
+					<label id="fHEL" class="names_label_discuss">Healthcare</label>
+					<div id="fHEL_color" class="color_bar color_bar_discuss"></div>
+					<label id="fHEL_data" class="values_label values_label_discuss"></label>
+					<div id="fHEL_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
+					<label id="fHEL_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
+					<div id="fHEL_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
+				<?php $slice = "HEL"; $data = getDiscussionDataForSlice("hel", "federalbudget"); ?>
+				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
+				</div><br /><br />
+				
+				<div id="fINC_budget_function_container" class="container container_discuss">
+					<input type="hidden" name="fINC_d" id="fINC_d" class="d" value="1" />
+					<img src="../images/icons/INC.png" style="width:16px;position:absolute;left:-20px;top:7px" alt="" />
+					<label id="fINC" class="names_label_discuss">Income Security</label>
+					<div id="fINC_color" class="color_bar color_bar_discuss"></div>
+					<label id="fINC_data" class="values_label values_label_discuss"></label>
+					<div id="fINC_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
+					<label id="fINC_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
+					<div id="fINC_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
+				<?php $slice = "INC"; $data = getDiscussionDataForSlice("inc", "federalbudget"); ?>
+				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
+				</div><br /><br />
+				
+				<div id="fSOC_budget_function_container" class="container container_discuss">
+					<input type="hidden" name="fSOC_d" id="fSOC_d" class="d" value="1" />
+					<img src="../images/icons/SOC.png" style="width:16px;position:absolute;left:-20px;top:7px" alt="" />
+					<label id="fSOC" class="names_label_discuss">Social Security</label>
+					<div id="fSOC_color" class="color_bar color_bar_discuss"></div>
+					<label id="fSOC_data" class="values_label values_label_discuss"></label>
+					<div id="fSOC_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
+					<label id="fSOC_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
+					<div id="fSOC_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
+				<?php $slice = "SOC"; $data = getDiscussionDataForSlice("soc", "federalbudget"); ?>
+				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
+				</div><br /><br />
+				
+				<div id="fOTH_budget_function_container" class="container container_discuss">
+					<input type="hidden" name="fOTH_d" id="fOTH_d" class="d" value="1" />
+					<img src="../images/icons/OTH.png" style="width:16px;position:absolute;left:-20px;top:7px" alt="" />
+					<label id="fOTH" class="names_label_discuss">Other</label>
+					<div id="fOTH_color" class="color_bar color_bar_discuss"></div>
+					<label id="fOTH_data" class="values_label values_label_discuss"></label>
+					<div id="fOTH_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
+					<label id="fOTH_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
+					<div id="fOTH_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
+				<?php $slice = "OTH"; $data = getDiscussionDataForSlice("oth", "federalbudget"); ?>
+				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
+				</div><br /><br />
+				
+			</div>
+			
+			<div class="content">
+				<div id="loading">Loading...</div>
+			</div>
+			<div id="sunburst_container" style="visibility:hidden">
+			</div>
+		</div>
+
+		<script src="../js/jquery.corner.js" type="text/javascript"></script>
+		<script src="../js/global.js" type="text/javascript"></script>
+		
+		<?php
+			//get avg pie data to populate css elements with
+			$avg_participie_data = getAveragePieData("federalbudget");
+			$arr_cleaned_str;
+			foreach($avg_participie_data as $key=>$val) {
+				$arr_cleaned_str .= '"' . $key . "|" . $val . '",';
+			}
+			
+			$script = '<script>var avg_participie_data = new Array(' . substr($arr_cleaned_str, 0, -1) . ');</script>';
+			echo $script;
+			//print_r($avg_participie_data);
+		?>
+		
+		<div class="dim"></div>
+		<div id="seemore_box"></div>
+		<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/add_argument_box.php"); ?>
+		<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/add_opinion_box.php"); ?>
+					
+		<script>
+		function blockTillVariablesAreLoaded() {
+			if(avg_participie_data != undefined && data_snapshot != undefined) {
+				console.log(avg_participie_data);
+				setPieDataCssElements(avg_participie_data, "federalbudget");		
+			}
+			else {
+				window.setTimeout("blockTillVariablesAreLoaded();",100);
+    		}
+		}
+		
+		blockTillVariablesAreLoaded();
+		</script>
+		
+		<input type="hidden" id="DEF_moreinfo" value="Includes National Defense and Veterans Benefits and Services.  National Defense includes the military activities of the Department of Defense (DoD), the nuclear-weapons related activities of the Department of Energy (DoE) and the National Nuclear Security Administration (NSA) and the national security activities of several agencies." />
+		<input type="hidden" id="HEL_moreinfo" value="Includes Health and Medicare.  Health includes includes most direct health care services programs and Medicare includes only the Medicare program, which provides health insurance to senior citizens and persons with disabilities." />
+		<input type="hidden" id="SCI_moreinfo" value="Includes the National Science Foundation (NSF), programs at the National Aeronautics and Space Administration except for aviation programs, and general science programs at the Department of Energy (DOE)." />
+		<input type="hidden" id="AGR_moreinfo" value="Includes farm income stabilization, agricultural research, and other services administered by the U.S. Department of Agriculture. The discretionary programs include research and education programs, economics and statistics services, administration of the farm support programs, farm loan programs, meat and poultry inspection and others." />
+		<input type="hidden" id="CRD_moreinfo" value="Includes federal programs to improve community economic conditions, promote rural development, and assist in federal preparations for and response to disasters. This function provides appropriated funding for several disaster mitigation and community development-related programs." />
+		<input type="hidden" id="SOC_moreinfo" value="Consists of the two payroll tax-financed programs that are collectively known as Social Security: Old-Age and Survivors Insurance and Disability Insurance (OASDI). This function includes Social Security benefit payments and funds to administer the program." />
+		<input type="hidden" id="EDU_moreinfo" value="Includes funding for the Department of Education, social services programs within the Department of Health and Human Services, and employment and training programs within the Department of Labor. It also contains funding for the Library of Congress and independent research and art agencies such as the Corporation for Public Broadcasting." />
+		<input type="hidden" id="TRA_moreinfo" value="Consists mostly of the programs administered by the Department of Transportation, including programs for highways, mass transit, aviation, and maritime activities. This function also includes two components of the Department of Homeland Security: the Coast Guard and the Transportation Security Administration." />
+		<input type="hidden" id="ENE_moreinfo" value="Contains civilian energy and environmental programs in the Department of Energy (DOE). This function also includes the Rural Utilities Service of the Department of Agriculture, the Tennessee Valley Authority, the Federal Energy Regulatory Commission, and the Nuclear Regulatory Commission." />
+		<input type="hidden" id="INC_moreinfo" value="Consists of a range of income security programs that provide cash or near-cash assistance (e.g., housing, nutrition, and energy assistance) to low-income persons, and benefits to certain retirees, persons with disabilities, and the unemployed." />
+		<input type="hidden" id="OTH_moreinfo" value="Includes Commerce and Housing Credit, Administration of Justice, General Government, International Affairs and Natural Resources and Environment." />
+
+		<div style="clear:both;margin-top:200px;display:block;position:relative;width:1300px;margin-top:100px;height:60px;font-size:12px;padding:8px;text-align:center;padding-top:10px">
+			<a href="../index.php">Home</a> &middot; <a href="../bakery.php">The bakery</a> &middot; <a href="../blog">Blog</a> &middot; <a href="../about.php">About us</a> &middot; <a href="../privacy.php">Privacy</a><br />
+			<span style="font-size:90%">Copyright 2012 Macro Connections group, MIT</span>
+		</div>
+
+      <div align="center">
+        <img class="fb-thumb" style="visibility:hidden" />
+        <div id="fb-name" style="visibility:hidden"></div>
+        <div id="fb-location" style="visibility:hidden"></div>
+      </div>
+      
+      <script src="../js/fb.js"></script>
+	</body>
+</html>

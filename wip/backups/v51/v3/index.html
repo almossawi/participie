@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta http-equiv="Pragma" content="no-cache">
+		<title>Participie (v0.32)</title>
+		<script src="js/json2.js" type="text/javascript"></script>
+		<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/jquery-ui.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" charset="utf-8" />
+		<script type="text/javascript" src="js/d3.js"></script>
+		<script type="text/javascript" src="js/d3.layout.js"></script>
+		<script src="js/jquery.corner.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="css/styledButton.css" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="css/uniform.default.css" type="text/css" media="screen" charset="utf-8" />
+		<script src="js/jquery.uniform.js" type="text/javascript"></script>
+		<script src="js/jquery.styledButton.js" type="text/javascript"></script>
+		<link href='http://fonts.googleapis.com/css?family=Mystery+Quest' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		
+		<h1>Participie</h1>
+		
+		<div style="position:absolute;left:1060px;top:24px;font-size:90%;width:190px">
+			<strong><a href="#" onclick="alert('Although you can submit pies and we can store them, the gallery is still being worked on!')">Wall of Pies</a> &middot; <a href="#">Blog</a> &middot; <a href="#">About</a></strong>
+		</div>
+		
+		<label style="font-family: Georgia, Times, Arial;font-size:130%;color:#535353;position:absolute;left:463px;top:80px">Make Your Own Federal Budget!</label>
+		<div style="float:left;width:450px">
+		
+				<div id="budget_overview" style="padding:10px">
+					<div id="f50_color" style="border-bottom-color:#6B5248">
+					<label id="f50">National Defense</label>
+					<label id="f50_data" class="values_label"></label>
+					</div>
+					
+					<div id="f250_color" style="border-bottom-color:#637939">
+					<label id="f250">General Science, Space and Technology</label>
+					<label id="f250_data" class="values_label"></label>
+					</div>
+					
+					<div id="f500_color" style="border-bottom-color:#8ca252">
+					<label id="f500">Education, Employment, Social Services</label>
+					<label id="f500_data" class="values_label"></label>
+					</div>
+					
+					<div id="f270_color" style="border-bottom-color:#b68c3b">
+					<label id="f270">Energy</label>
+					<label id="f270_data" class="values_label"></label>
+					</div>
+					
+					<div id="f300_color" style="border-bottom-color:#bd9e39">
+					<label id="f300">Natural Resources and Environment</label>
+					<label id="f300_data" class="values_label"></label>
+					</div>
+					
+					<div id="f400_color" style="border-bottom-color:#e7ba52">
+					<label id="f400">Transportation</label>
+					<label id="f400_data" class="values_label"></label>
+					</div>
+					
+					<div id="f450_color" style="border-bottom-color:#e7cb94">
+					<label id="f450">Community and Regional Development</label>
+					<label id="f450_data" class="values_label"></label>
+					</div>
+					
+					<div id="f350_color" style="border-bottom-color:#7b4173">
+					<label id="f350">Agriculture</label>
+					<label id="f350_data" class="values_label"></label>
+					</div>
+					
+					<div id="f370_color" style="border-bottom-color:#a55194">
+					<label id="f370">Commerce and Housing Credit</label>
+					<label id="f370_data" class="values_label"></label>
+					</div>
+					
+					<div id="f550_color" style="border-bottom-color:#6b6ecf">
+					<label id="f550">Health</label>
+					<label id="f550_data" class="values_label"></label>
+					</div>
+					
+					<div id="f570_color" style="border-bottom-color:#9c9ede">
+					<label id="f570">Medicare</label>
+					<label id="f570_data" class="values_label"></label>
+					</div>
+					
+					<div id="f600_color" style="border-bottom-color:#ad494a">
+					<label id="f600">Income Security</label>
+					<label id="f600_data" class="values_label"></label>
+					</div>
+										
+					<div id="f650_color" style="border-bottom-color:#d6616b">
+					<label id="f650">Social Security</label>
+					<label id="f650_data" class="values_label"></label>
+					</div>
+										
+					<div id="f700_color" style="border-bottom-color:#e7969c">
+					<label id="f700">Veterans Benefits and Services</label>
+					<label id="f700_data" class="values_label"></label>
+					</div>
+										
+					<div id="f750_color" style="border-bottom-color:#636363">
+					<label id="f750">Administration of Justice</label>
+					<label id="f750_data" class="values_label"></label>
+					</div>
+										
+					<div id="f150_color" style="border-bottom-color:#969696">
+					<label id="f150">International Affairs</label>
+					<label id="f150_data" class="values_label"></label>
+					</div>
+										
+					<div id="f800_color" style="border-bottom-color:#bdbdbd">
+					<label id="f800">General Government</label>
+					<label id="f800_data" class="values_label"></label>
+					</div>
+				</div>
+		
+		<div class="content">
+			<div id="loading">Loading...</div>
+		</div>
+		<div id="hovered_over_node" style="display:none"></div>
+		</div>
+		
+		<div id="the_slice_im_on">
+		</div>
+		
+		<div id="sunburst_container">
+		</div>
+		<br />
+		<!--<div style="position:absolute;top:750px;left:530px">
+			<label><input id="show_labels_on_hover" type="checkbox" /><span style="position:relative;top:6px">Show tooltips on hover</span></label>
+		</div>-->
+		
+		<div id="rhs_container">
+			<!--<img src="images/vote.png" style="position:relative;left:50px" alt="2012 Presidential Elections" title="2012 Presidential Elections" />-->
+			<p>Decide how the US budget should be spent by resizing the pie's slices using the sliders.  A slider always modifies the slice to its left.  Reduce a slice first so that you can increase another one.</p>
+			<p>Roll over a part of the pie to see the budget function that it represents.</p>
+			<p>When you're done, submit your pie.  We'll collect everyone's pies and then consolidate them into something meaningful for you as well as the 2012 presidential candidates!</p>
+
+			<!--<div style="width:250px;border-bottom:1px solid #cccccc;display:block"></div>-->
+			
+			<!--<img src="images/democrat.png" style="float:left" />
+			<img src="images/republican.png" style="float:right"/>-->
+			<img src="images/political_scale.png"/>
+			
+			<!--<form action="addpie.php" method="post">-->
+			
+			<label><input type="radio" name="politics" value="DL" /><br />Strong<br />Democrat</label>
+			<label><input type="radio" name="politics" value="DS" /><br />Lean<br />Democrat</label>
+			<label><input type="radio" name="politics" value="NN" /><br />Center</label>
+			<label><input type="radio" name="politics" value="RL" /><br />Lean<br />Republican</label>
+			<label class="label_last"><input type="radio" name="politics" value="RS" /><br />Strong<br />Republican</label>
+			<div style="display:block;clear:both;height:12px"></div>
+			<div style="float:left;height:30px">
+			<label><span style="font-size:10pt;position:relative;top:6px">State</span></label>
+			</div>
+			<div style="float:right;height:30px">
+			<label><select name="state" id="state">
+	<option value="">Choose your state</option>
+	<option value="AL">Alabama</option>
+	<option value="AK">Alaska</option>
+	<option value="AZ">Arizona</option>
+	<option value="AR">Arkansas</option>
+	<option value="CA">California</option>
+	<option value="CO">Colorado</option>
+	<option value="CT">Connecticut</option>
+	<option value="DE">Delaware</option>
+	<option value="DC">District of Columbia</option>
+	<option value="FL">Florida</option>
+	<option value="GA">Georgia</option>
+	<option value="HI">Hawaii</option>
+	<option value="ID">Idaho</option>
+	<option value="IL">Illinois</option>
+	<option value="IN">Indiana</option>
+	<option value="IA">Iowa</option>
+	<option value="KS">Kansas</option>
+	<option value="KY">Kentucky</option>
+	<option value="LA">Louisiana</option>
+	<option value="ME">Maine</option>
+	<option value="MD">Maryland</option>
+	<option value="MA">Massachusetts</option>
+	<option value="MI">Michigan</option>
+	<option value="MN">Minnesota</option>
+	<option value="MS">Mississippi</option>
+	<option value="MO">Missouri</option>
+	<option value="MT">Montana</option>
+	<option value="NE">Nebraska</option>
+	<option value="NV">Nevada</option>
+	<option value="NH">New Hampshire</option>
+	<option value="NJ">New Jersey</option>
+	<option value="NM">New Mexico</option>
+	<option value="NY">New York</option>
+	<option value="NC">North Carolina</option>
+	<option value="ND">North Dakota</option>
+	<option value="OH">Ohio</option>
+	<option value="OK">Oklahoma</option>
+	<option value="OR">Oregon</option>
+	<option value="PA">Pennsylvania</option>
+	<option value="RI">Rhode Island</option>
+	<option value="SC">South Carolina</option>
+	<option value="SD">South Dakota</option>
+	<option value="TN">Tennessee</option>
+	<option value="TX">Texas</option>
+	<option value="UT">Utah</option>
+	<option value="VT">Vermont</option>
+	<option value="VA">Virginia</option>
+	<option value="WA">Washington</option>
+	<option value="WV">West Virginia</option>
+	<option value="WI">Wisconsin</option>
+	<option value="WY">Wyoming</option>
+	</select>
+</div>
+	
+			<div style="float:left;height:30px">
+			<label><span style="font-size:10pt;position:relative;top:6px">Gender</span></label>
+			</div>
+			<div style="float:right;height:30px">
+			<label><select name="gender" id="gender">
+				<option value="">Choose your gender</option>
+				<option value="M">Male</option>
+				<option value="F">Female</option>
+			</select>
+			</label>
+			</div>
+			
+			<div style="float:left;height:30px">
+			<label><span style="font-size:10pt;position:relative;top:6px">Age</span></label>
+			</div>
+			<div style="float:right;height:30px">
+			<label>
+			<select name="age" id="age">
+				<option value="">Choose your age</option>
+				<option value="1">18 to 24</option>
+				<option value="2">25 to 34</option>
+				<option value="3">35 to 44</option>
+				<option value="4">45 to 54</option>
+				<option value="5">55 to 64</option>
+				<option value="6">65 or older</option>
+			</select>
+			</label>
+			</div>
+			
+			<div style="float:left;height:30px;width:130px;padding-top:2px">
+			<label><span style="font-size:10pt;position:relative;top:3px">Zip code (optional)</span></label>
+			</div>
+			<div style="float:right;height:30px;width:80px;padding-top:2px">
+			<label><input id="zip" name="zip" type="text" maxlength="5" style="border:1px solid #cccccc;height:13px;font-family:'Myriad Pro', Arial;padding:3px;width:50px;font-size:10pt" /></label>
+			</div>
+
+			<button id="submit_button" style="font-size:80%;margin-top:20px;left:2px">I'm all done, bake my pie!</button>
+			<div id="message" style="height:80px"></div>
+			
+			<input type="hidden" id="pie" name="pie" value="" />
+			<!--</form>-->
+			
+			<div style="position:absolute;top:550px">
+			<p style="font-style:italic;font-size:70%;padding-top:30px;color:#6a6a6a">
+			<br /><br />Participie is a project by the Macro Connections Group, The Media Lab, MIT
+			<br /><br />This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+			</p>
+			</div>
+		</div>
+		<script src="js/global.js" type="text/javascript"></script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Participie (v0.1)</title>
+		<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/jquery-ui.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" charset="utf-8" />
+		<script type="text/javascript" src="js/d3.js"></script>
+		<script type="text/javascript" src="js/d3.layout.js"></script>
+		<script src="js/jquery.corner.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="css/styledButton.css" type="text/css" media="screen" charset="utf-8" />
+		<script src="js/jquery.styledButton.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<h1>Participie</h1>
+		<label style="font-family: Georgia, Times, Arial;font-size:130%;color:#535353;position:relative;left:66px">The US Budget</label>
+		<div style="float:left;width:450px">
+			<!--<fieldset>
+				<legend>Options</legend>
+				<label>SSN: <input maxlength="3" type="text" name="ssn_percent" id="ssn_percent" value="25" class="text" /><span class="text_field_append">%</span></label>
+				<label>EDU: <input maxlength="3" type="text" name="edu_percent" id="edu_percent" value="5" class="text" /><span class="text_field_append">%</span></label>
+				<label>MED: <input maxlength="3" type="text" name="med_percent" id="med_percent" value="30" class="text" /><span class="text_field_append">%</span></label>
+				<label>DEF: <input maxlength="3" type="text" name="def_percent" id="def_percent" value="30" class="text" /><span class="text_field_append">%</span></label>
+				<label>MIL: <input maxlength="3" type="text" name="mil_percent" id="mil_percent" value="10" class="text" /><span class="text_field_append">%</span></label>
+				
+				<button id="update_button" style="font-size:80%">Update</button>
+				</fieldset>-->
+			<div id="sliders" style="padding:10px">
+				<label>
+					Social Security
+					<div id="ssn_percent" class="slider"></div>
+					<span id="ssn_val"></span>
+				</label>
+				<label>
+					Education
+					<div id="edu_percent" class="slider"></div>
+					<span id="edu_val"></span>
+				</label>
+				<label>
+					Medicare
+					<div id="med_percent" class="slider"></div>
+					<span id="med_val"></span>
+				</label>
+				<label>
+					Defense
+					<div id="def_percent" class="slider"></div>
+					<span id="def_val"></span>
+				</label>
+				<label>
+					Income Security
+					<div id="ins_percent" class="slider"></div>
+					<span id="ins_val"></span>
+				</label>
+			</div>
+			<div id="total_val"></div>
+			<button id="update_button" style="font-size:80%">Update pie</button>
+		</div>
+		<div class="content">
+			<div id="loading">Loading...</div>
+		</div>
+		<!-- <img id="fingerprint" src="images/fingerprint_nk_loading.jpg" /> -->
+		<div id="hovered_over_node" style="display:none"></div>
+		</div>
+		<div id="sunburst_container">
+		</div>
+		<br />
+		<div style="border-left:1px solid #cccccc;padding-left:10px;width:260px;position:absolute;top:130px;left:920px;font-family:Georgia, Times, Arial">
+			<img src="images/vote.png" style="position:relative;left:50px" alt="2012 Presidential Elections" title="2012 Presidential Elections" />
+			<p>Decide how the US budget should be spent by moving the sliders with your mouse cursor or your keyboard's arrow keys.</p>
+			<p>Roll over a part of the pie to see the program or agency that it represents.</p>
+			<p>When you're done, submit your pie.  We'll collect everyone's pies and then consolidate them into something meaningful for you as well as the 2012 presidential candidates!</p>
+			<button id="submit_button" style="font-size:80%">Submit your participie!</button>
+			<p style="font-style:italic;font-size:70%;padding-top:30px;color:#6a6a6a">2012 US budget data are from the Office of Management and Budget, <a href="http://www.whitehouse.gov/omb/budget/Historicals">whitehouse.gov</a><br /><br />Macro Connections Group, The Media Lab, MIT</p>
+		</div>
+		<script src="js/global.js" type="text/javascript"></script>
+	</body>
+</html>

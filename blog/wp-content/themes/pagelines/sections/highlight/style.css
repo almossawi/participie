@@ -1,0 +1,23 @@
+#highlight {
+	text-align: center;
+
+}
+	#highlight .content-pad .highlight-area{padding: 20px;}
+	#highlight .copy-pad .highlight-area{padding: 20px 15px;}
+
+	.hl-image-top{
+		margin-top: 20px;
+	}
+	.highlight-head{
+		line-height: 1.4em;
+	}
+
+	#highlight .content .highlight-subhead, #highlight .copy-pad .highlight-subhead{
+		font-size: .85em;
+	}
+	
+	#highlight .hl-image-bottom{
+		margin: 3em 0 0 0;
+	}
+	
+	#highlight .highlight-splash img {max-width: 100%;}

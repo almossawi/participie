@@ -1,0 +1,242 @@
+# Copyright (C) 2011 Cloriato Lite
+# This file is distributed under the same license as the WordPress package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Cloriato Lite 1.1\n"
+"Report-Msgid-Bugs-To: admin@inkthemes.com"
+"POT-Creation-Date: 2011-10-12 12:47:23+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2011-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Inkthemes\n"
+
+#: loop.php:46 
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: search.php:31 
+msgid "Nothing Found"
+msgstr ""
+
+#: search.php:37 
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr ""
+
+#: sidebar.php:12 
+msgid "Recent Post with thumbnail"
+msgstr ""
+
+#: sidebar.php:45
+msgid "Archives"
+msgstr ""
+
+#: sidebar.php:51
+msgid "Categories"
+msgstr ""
+
+#: 404.php:16
+msgid "This is somewhat embarrassing, isn&rsquo;t it?"
+msgstr ""
+
+#: 404.php:20
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching, or one of the links below, can help."
+msgstr ""
+
+#: 404.php:26
+msgid "Most Used Categories"
+msgstr ""
+
+#: archive.php:41
+msgid "Blog Archives"
+msgstr ""
+
+#: index.php:24
+msgid "&larr; Older posts"
+msgstr ""
+
+#: index.php:26
+msgid "Newer posts &rarr;"
+msgstr ""
+
+#: search.php:23
+msgid "Search Results for: %s"
+msgstr ""
+
+#: tag.php:17
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: tag.php:21
+msgid "&larr; Older posts"
+msgstr ""
+
+#: tag.php:22
+msgid "Newer posts &rarr;"
+msgstr ""
+
+#: 404.php:34
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: archive.php:35
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: archive.php:37
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: archive.php:39
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: archive.php:58
+msgid "&larr; Older posts"
+msgstr ""
+
+#: archive.php:60
+msgid "Newer posts &rarr;"
+msgstr ""
+
+#: attachment.php:15
+msgid "Return to %s"
+msgstr ""
+
+#: attachment.php:18
+msgid "<span>&larr;</span> %s"
+msgstr ""
+
+#: attachment.php:25
+msgid "By %2$s"
+msgstr ""
+
+#: attachment.php:29
+msgid "View all posts by %s"
+msgstr ""
+
+#: attachment.php:36
+msgid "Published %2$s"
+msgstr ""
+
+#: attachment.php:46
+msgid "Full size is %s pixels"
+msgstr ""
+
+#: attachment.php:49
+msgid "Link to full-size image"
+msgstr ""
+
+#: attachment.php:56
+msgid "Edit"
+msgstr ""
+
+#: attachment.php:90
+msgid "Continue reading &rarr;"
+msgstr ""
+
+#: attachment.php:91
+msgid "Pages:"
+msgstr ""
+
+#: attachment.php:93
+msgid "Edit:"
+msgstr ""
+
+#: author.php:16
+msgid "Author Archives: %s:"
+msgstr ""
+
+#: author.php:25
+msgid "About %s"
+msgstr ""
+
+#: author.php:47
+msgid "&larr; Older posts"
+msgstr ""
+
+#: author.php:49
+msgid "Newer posts &rarr;"
+msgstr ""
+
+#: blog.php:65
+msgid "&larr; Older posts"
+msgstr ""
+
+#: blog.php:67
+msgid "Newer posts &rarr;"
+msgstr ""
+
+#: category.php:14
+msgid "Category Archives: %s"
+msgstr ""
+
+#: category.php:29
+msgid "&larr; Older posts"
+msgstr ""
+
+#: category.php:31
+msgid "Newer posts &rarr;"
+msgstr ""
+
+#: inkthemes-functions.php:45
+msgid "Main Menu"
+msgstr ""
+
+#: inkthemes-functions.php:66
+#: inkthemes-functions.php:69
+msgid "Home"
+msgstr ""
+
+#: inkthemes-functions.php:157
+msgid "Page"
+msgstr ""
+
+#: inkthemes-functions.php:213
+msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>."
+msgstr ""
+
+#: inkthemes-functions.php:215
+msgid "This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>."
+msgstr ""
+
+#: inkthemes-functions.php:217
+msgid "Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>."
+msgstr ""
+
+#: inkthemes-functions.php:249
+msgid "Primary Widget Area"
+msgstr ""
+
+#: inkthemes-functions.php:251
+msgid "The primary widget area"
+msgstr ""
+
+#: inkthemes-functions.php:259
+msgid "Secondary Widget Area"
+msgstr ""
+
+#: inkthemes-functions.php:261
+msgid "The secondary widget area"
+msgstr ""
+
+#: inkthemes-functions.php:269
+msgid "First Footer Widget Area"
+msgstr ""
+
+#: inkthemes-functions.php:271
+msgid "The first footer widget area"
+msgstr ""
+
+#: inkthemes-functions.php:279
+msgid "Second Footer Widget Area"
+msgstr ""
+
+#: inkthemes-functions.php:281
+msgid "The second footer widget area"
+msgstr ""
+
+#: inkthemes-functions.php:291
+msgid "The third footer widget area"
+msgstr ""

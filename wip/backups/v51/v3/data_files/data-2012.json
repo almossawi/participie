@@ -1,0 +1,107 @@
+{
+	"name": "US_Budget",
+	"children": [
+		{
+			"name": "50",
+			"label": "National Defense",
+			"size": 19.52,
+			"color": "#6B5248"
+		},
+		{
+			"name": "250",
+			"label": "General Science, Space and Technology",
+			"size": 0.84,
+			"color": "#637939"
+		},
+		{
+			"name": "500",
+			"label": "Education Training, Employment and Social Services",
+			"size": 3.79,
+			"color": "#8ca252"
+		},
+		{
+			"name": "270",
+			"label": "Energy",
+			"size": 0.63,
+			"color": "#b68c3b"
+		},
+		{
+			"name": "300",
+			"label": "Natural Resources and Environment",
+			"size": 1.17,
+			"color": "#bd9e39"
+		},
+		{
+			"name": "400",
+			"label": "Transportation",
+			"size": 2.79,
+			"color": "#e7ba52"
+		},
+		{
+			"name": "450",
+			"label": "Community and Regional Development",
+			"size": 0.86,
+			"color": "#e7cb94"
+		},
+		{
+			"name": "350",
+			"label": "Agriculture",
+			"size": 0.52,
+			"color": "#7b4173"
+		},
+		{
+			"name": "370",
+			"label": "Commerce and Housing Credit",
+			"size": 2.17,
+			"color": "#a55194"
+		},
+		{
+			"name": "550",
+			"label": "Health",
+			"size": 9.85,
+			"color": "#6b6ecf"
+		},
+		{
+			"name": "570",
+			"label": "Medicare",
+			"size": 13.20,
+			"color": "#9c9ede"
+		},
+		{
+			"name": "600",
+			"label": "Income Security",
+			"size": 15.79,
+			"color": "#ad494a"
+		},
+		{
+			"name": "650",
+			"label": "Social Security",
+			"size": 21.22,
+			"color": "#d6616b"
+		},
+		{
+			"name": "700",
+			"label": "Veterans Benefits and Services",
+			"size": 3.53,
+			"color": "#e7969c"
+		},
+		{
+			"name": "750",
+			"label": "Administration of Justice",
+			"size": 1.69,
+			"color": "#636363"
+		},
+		{
+			"name": "150",
+			"label": "International Affairs",
+			"size": 1.53,
+			"color": "#969696"
+		},
+		{
+			"name": "800",
+			"label": "General Government",
+			"size": 0.87,
+			"color": "#bdbdbd"
+		}
+	]
+}
