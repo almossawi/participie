@@ -29,6 +29,8 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 		<link rel="stylesheet" href="../css/uniform.default.css" type="text/css" media="screen" charset="utf-8" />
 		<script src="../js/jquery.uniform.js" type="text/javascript"></script>
 		<script src="../js/jquery.styledButton.js" type="text/javascript"></script>
+		<script src="../js/jquery.qtip.min.js" type="text/javascript"></script>
+		
 		<link href="http://fonts.googleapis.com/css?family=Mystery+Quest" rel="stylesheet" type="text/css" />
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
 		<link href="http://fonts.googleapis.com/css?family=Junge" rel="stylesheet" type="text/css" />
@@ -93,7 +95,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fDEF_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fDEF_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fDEF_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "DEF"; $data = getDiscussionDataForSlice("def", "federalbudget"); ?>
+				<?php $slice = "DEF"; $data_for = getDiscussionDataForSliceFor("def", "federalbudget"); $data_against = getDiscussionDataForSliceAgainst("def", "federalbudget"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -107,7 +109,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fSCI_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fSCI_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fSCI_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "SCI"; $data = getDiscussionDataForSlice("sci", "federalbudget"); ?>
+				<?php $slice = "SCI"; $data_for = getDiscussionDataForSliceFor("sci", "federalbudget"); $data_against = getDiscussionDataForSliceAgainst("sci", "federalbudget"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -120,7 +122,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fEDU_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fEDU_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fEDU_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "EDU"; $data = getDiscussionDataForSlice("edu", "federalbudget"); ?>
+				<?php $slice = "EDU"; $data_for = getDiscussionDataForSliceFor("edu", "federalbudget"); $data_against = getDiscussionDataForSliceAgainst("edu", "federalbudget"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -133,7 +135,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fENE_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fENE_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fENE_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "ENE"; $data = getDiscussionDataForSlice("ene", "federalbudget"); ?>
+				<?php $slice = "ENE"; $data_for = getDiscussionDataForSliceFor("ene", "federalbudget"); $data_against = getDiscussionDataForSliceAgainst("ene", "federalbudget"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 
@@ -146,7 +148,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fTRA_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fTRA_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fTRA_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "TRA"; $data = getDiscussionDataForSlice("tra", "federalbudget"); ?>
+				<?php $slice = "TRA"; $data_for = getDiscussionDataForSliceFor("tra", "federalbudget"); $data_against = getDiscussionDataForSliceAgainst("tra", "federalbudget"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 								
@@ -159,7 +161,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fCRD_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fCRD_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fCRD_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "CRD"; $data = getDiscussionDataForSlice("crd", "federalbudget"); ?>
+				<?php $slice = "CRD"; $data_for = getDiscussionDataForSliceFor("crd", "federalbudget"); $data_against = getDiscussionDataForSliceAgainst("crd", "federalbudget"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 
@@ -172,7 +174,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fAGR_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fAGR_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fAGR_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "AGR"; $data = getDiscussionDataForSlice("agr", "federalbudget"); ?>
+				<?php $slice = "AGR"; $data_for = getDiscussionDataForSliceFor("agr", "federalbudget"); $data_against = getDiscussionDataForSliceAgainst("agr", "federalbudget"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -185,7 +187,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fHEL_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fHEL_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fHEL_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "HEL"; $data = getDiscussionDataForSlice("hel", "federalbudget"); ?>
+				<?php $slice = "HEL"; $data_for = getDiscussionDataForSliceFor("hel", "federalbudget"); $data_against = getDiscussionDataForSliceAgainst("hel", "federalbudget"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -198,7 +200,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fINC_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fINC_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fINC_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "INC"; $data = getDiscussionDataForSlice("inc", "federalbudget"); ?>
+				<?php $slice = "INC"; $data_for = getDiscussionDataForSliceFor("inc", "federalbudget"); $data_against = getDiscussionDataForSliceAgainst("inc", "federalbudget"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -211,7 +213,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fSOC_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fSOC_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fSOC_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "SOC"; $data = getDiscussionDataForSlice("soc", "federalbudget"); ?>
+				<?php $slice = "SOC"; $data_for = getDiscussionDataForSliceFor("soc", "federalbudget"); $data_against = getDiscussionDataForSliceAgainst("soc", "federalbudget"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -224,7 +226,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fOTH_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fOTH_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fOTH_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "OTH"; $data = getDiscussionDataForSlice("oth", "federalbudget"); ?>
+				<?php $slice = "OTH"; $data_for = getDiscussionDataForSliceFor("oth", "federalbudget"); $data_against = getDiscussionDataForSliceAgainst("oth", "federalbudget"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -289,6 +291,8 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 			<span style="font-size:90%">Copyright 2012 Macro Connections group, MIT</span>
 		</div>
 
+	<input type="hidden" name="tooltip_content" id="tooltip_content" val="" />
+		
       <div align="center">
         <img class="fb-thumb" style="visibility:hidden" />
         <div id="fb-name" style="visibility:hidden"></div>

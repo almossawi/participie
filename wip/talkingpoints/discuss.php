@@ -28,6 +28,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 		<link rel="stylesheet" href="../css/uniform.default.css" type="text/css" media="screen" charset="utf-8" />
 		<script src="../js/jquery.uniform.js" type="text/javascript"></script>
 		<script src="../js/jquery.styledButton.js" type="text/javascript"></script>
+		<script src="../js/jquery.qtip.min.js" type="text/javascript"></script>
 		
 		<link href="http://fonts.googleapis.com/css?family=Mystery+Quest" rel="stylesheet" type="text/css" />
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
@@ -42,7 +43,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 		<meta property="og:site_name" content="Participie.com" />
 		<meta property="fb:admins" content="542418566" />
 
-<script type="text/javascript">
+<script type="text/javascript">        
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-30696925-1']);
   _gaq.push(['_trackPageview']);
@@ -92,7 +93,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fWAR_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fWAR_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fWAR_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "WAR"; $data = getDiscussionDataForSlice("war", "talkingpoints"); ?>
+				<?php $slice = "WAR"; $data_for = getDiscussionDataForSliceFor("war", "talkingpoints"); $data_against = getDiscussionDataForSliceAgainst("war", "talkingpoints"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -105,7 +106,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fGAY_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fGAY_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fGAY_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "GAY"; $data = getDiscussionDataForSlice("gay", "talkingpoints"); ?>
+				<?php $slice = "GAY"; $data_for = getDiscussionDataForSliceFor("gay", "talkingpoints"); $data_against = getDiscussionDataForSliceAgainst("gay", "talkingpoints"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 
@@ -117,7 +118,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fMAR_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fMAR_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fMAR_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "MAR"; $data = getDiscussionDataForSlice("mar", "talkingpoints"); ?>
+				<?php $slice = "MAR"; $data_for = getDiscussionDataForSliceFor("mar", "talkingpoints"); $data_against = getDiscussionDataForSliceAgainst("mar", "talkingpoints"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -129,7 +130,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fECO_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fECO_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fECO_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "ECO"; $data = getDiscussionDataForSlice("eco", "talkingpoints"); ?>
+				<?php $slice = "ECO"; $data_for = getDiscussionDataForSliceFor("eco", "talkingpoints"); $data_against = getDiscussionDataForSliceAgainst("eco", "talkingpoints"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -141,7 +142,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fGUN_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fGUN_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fGUN_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "GUN"; $data = getDiscussionDataForSlice("gun", "talkingpoints"); ?>
+				<?php $slice = "GUN"; $data_for = getDiscussionDataForSliceFor("gun", "talkingpoints"); $data_against = getDiscussionDataForSliceAgainst("gun", "talkingpoints"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -153,7 +154,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fHEL_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fHEL_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fHEL_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "HEL"; $data = getDiscussionDataForSlice("hel", "talkingpoints"); ?>
+				<?php $slice = "HEL"; $data_for = getDiscussionDataForSliceFor("hel", "talkingpoints"); $data_against = getDiscussionDataForSliceAgainst("hel", "talkingpoints"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -165,7 +166,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fEDU_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fEDU_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fEDU_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "EDU"; $data = getDiscussionDataForSlice("edu", "talkingpoints"); ?>
+				<?php $slice = "EDU"; $data_for = getDiscussionDataForSliceFor("edu", "talkingpoints"); $data_against = getDiscussionDataForSliceAgainst("edu", "talkingpoints"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -177,7 +178,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fPRI_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fPRI_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fPRI_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "PRI"; $data = getDiscussionDataForSlice("pri", "talkingpoints"); ?>
+				<?php $slice = "PRI"; $data_for = getDiscussionDataForSliceFor("pri", "talkingpoints"); $data_against = getDiscussionDataForSliceAgainst("pri", "talkingpoints"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 				
@@ -189,7 +190,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 					<div id="fGLO_color_proportional" class="color_bar_proportional color_bar_proportional_discuss"></div>
 					<label id="fGLO_data_participie_avg" class="values_label values_label_participie_avg_discuss"></label>
 					<div id="fGLO_color_proportional_participie_avg" class="color_bar_proportional color_bar_proportional_participie_avg_discuss"></div>
-				<?php $slice = "GLO"; $data = getDiscussionDataForSlice("glo", "talkingpoints"); ?>
+				<?php $slice = "GLO"; $data_for = getDiscussionDataForSliceFor("glo", "talkingpoints"); $data_against = getDiscussionDataForSliceAgainst("glo", "talkingpoints"); ?>
 				<?php require("/var/www/vhosts/participie.com/httpdocs/wip/includes/discuss.php"); ?>
 				</div><br /><br />
 			</div>
@@ -240,13 +241,15 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.php");
 			<a href="../index.php">Home</a> &middot; <a href="../bakery.php">The bakery</a> &middot; <a href="../blog">Blog</a> &middot; <a href="../about.php">About us</a> &middot; <a href="../privacy.php">Privacy</a><br />
 			<span style="font-size:90%">Copyright 2012 Macro Connections group, MIT</span>
 		</div>
+
+		<input type="hidden" name="tooltip_content" id="tooltip_content" val="" />
 		
 		<div align="center">
         <img class="fb-thumb" style="visibility:hidden" />
         <div id="fb-name" style="visibility:hidden"></div>
         <div id="fb-location" style="visibility:hidden"></div>
       </div>
-      
+
       <script src="../js/fb.js"></script>
 	</body>
 </html>

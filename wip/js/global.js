@@ -2,6 +2,13 @@
 
 var radians = Math.PI / 180;
 
+var getLocation = function(href) {
+    var l = document.createElement("a");
+    l.href = href;
+    return l;
+};
+
+
 function getURLParameter(name) {
     return decodeURI(
         (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
@@ -896,6 +903,37 @@ $(function() {
   $(window).scroll(sticky_relocate);
   sticky_relocate();
   });
+  
+  //tooltips for evidence article links
+  $('.evidence_article').qtip({
+   content: 'none',
+   api: {
+        beforeShow: function () {
+            this.updateContent($("#tooltip_content").val(), true);
+        }
+   },
+   hide: 'mouseout',
+   style: { 
+   	  fontSize:12,
+      tip: 'bottomMiddle',
+      name: 'light',
+      backgroundColor: '#f7f7f7',
+      border: {
+         width: 1,
+         radius: 4
+      },
+   },
+   position: {
+      corner: {
+         target: 'topMiddle',
+         tooltip: 'bottomMiddle'
+      }
+   },
+   show: {
+      delay:0,
+      when: { event: 'mouseover' }
+   }
+})
 });
 
 
@@ -934,6 +972,13 @@ function assignEventListeners() {
 		// }, {scope: 'user_location'});
 		 FB.login();
     });*/
+    
+    //set top level domain to display in tooltip
+    $(".evidence_article").unbind('mouseover').mouseover(function(e) {
+	    var url = $(this).attr('href');
+	    var l = getLocation(url);
+		$("#tooltip_content").val(l.hostname);
+    });
 	
 	$(".add_to_the_argument").unbind('click').click(function (e) { //unbind first since calling assignEventListeners() again would result in multiple calls to the click function for this element
 		var srcE = e.srcElement ? e.srcElement : e.target;

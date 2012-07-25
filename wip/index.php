@@ -33,7 +33,7 @@
 
 			
 					<div style="position:relative;width:100%;height:30px;font-size:12px;padding:8px;text-align:center">
-						<a href="index.php">Home</a> &middot; <a href="bakery.php">The bakery</a> &middot; <a href="../blog">Blog</a> &middot; <a href="about.php">About us</a> &middot; <a href="privacy.php">Privacy</a>
+						<a href="index.php">Home</a> &middot; <a href="bakery.php">The bakery</a> &middot; <a href="../blog">Blog</a> &middot; <a href="about.php">About us</a>  &middot; <a href="http://www.participie.com/blog/?page_id=156">Why Participie?</a> &middot; <a href="privacy.php">Privacy</a>
 						<br /><span style="font-size:90%">Copyright 2012 Macro Connections Group, MIT</span>
 						<br /><a href="http://www.twitter.com/participie"><img src="images/twitter.png" alt="twitter" title="twitter" style="border:0;padding-top:3px" /></a>
 						

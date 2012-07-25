@@ -171,7 +171,7 @@ function getAveragePieData($pie) {
 	return $arr_data;
 }*/
 
-function getDiscussionDataForSlice($slice, $pie) {
+/*function getDiscussionDataForSlice($slice, $pie) {
 	if(strlen($slice) != 3) return null;
 	$slice = htmlentities(strip_tags(trim($slice)), ENT_QUOTES, 'UTF-8');
 	
@@ -204,7 +204,71 @@ function getDiscussionDataForSlice($slice, $pie) {
 	}
 	
 	return $arr_data;
+}*/
+
+function getDiscussionDataForSliceFor($slice, $pie) {
+	if(strlen($slice) != 3) return null;
+	$slice = htmlentities(strip_tags(trim($slice)), ENT_QUOTES, 'UTF-8');
+	
+	if($pie != "federalbudget" && $pie != "talkingpoints") return null;
+	if($pie == "federalbudget") { $pie = ""; $which_pie = "federalbudget"; }
+	elseif($pie == "talkingpoints") { $pie = "talkingpoints_";  $which_pie = "talkingpoints"; }
+	
+	require("/var/www/vhosts/participie.com/httpdocs/config.php");
+	
+	#connect to mysql
+	$connection = mysql_connect($config['sql_host'],$config['sql_user'],$config['sql_pass']);
+
+	#select db
+	$db_selected = mysql_select_db($config['db_name'],$connection);
+
+	$query = "(SELECT `cpd_id`, `for_which_slice`, `for_or_against`, `statement`, `evidence_article`, `up_votes`, `down_votes`, `public_opinion`, A.author, A.city, A.state, A.country, A.timestamp, B.author as opinion_author, B.city as opinion_city, B.state as opinion_state, B.country as opinion_country, B.timestamp as opinion_timestamp, up_votes-down_votes as score FROM `cooked_pies_" . $pie . "discussions` A "
+			. "LEFT JOIN public_opinions B ON cpd_id = pie_discussion_id and A.approved=1 and B.approved=1 AND which_pie='$which_pie' "
+			. "WHERE for_which_slice='$slice' AND for_or_against='f' GROUP BY cpd_id ORDER BY score DESC LIMIT 2) ";
+	//echo $query;		
+	
+	$result = mysql_query($query);
+	
+	$arr_data = null;
+	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		$arr_data[] = $row;
+	}
+	
+	return $arr_data;
 }
+
+function getDiscussionDataForSliceAgainst($slice, $pie) {
+	if(strlen($slice) != 3) return null;
+	$slice = htmlentities(strip_tags(trim($slice)), ENT_QUOTES, 'UTF-8');
+	
+	if($pie != "federalbudget" && $pie != "talkingpoints") return null;
+	if($pie == "federalbudget") { $pie = ""; $which_pie = "federalbudget"; }
+	elseif($pie == "talkingpoints") { $pie = "talkingpoints_";  $which_pie = "talkingpoints"; }
+	
+	require("/var/www/vhosts/participie.com/httpdocs/config.php");
+	
+	#connect to mysql
+	$connection = mysql_connect($config['sql_host'],$config['sql_user'],$config['sql_pass']);
+
+	#select db
+	$db_selected = mysql_select_db($config['db_name'],$connection);
+
+	$query = "(SELECT `cpd_id`, `for_which_slice`, `for_or_against`, `statement`, `evidence_article`, `up_votes`, `down_votes`, `public_opinion`, A.author, A.city, A.state, A.country, A.timestamp, B.author as opinion_author, B.city as opinion_city, B.state as opinion_state, B.country as opinion_country, B.timestamp as opinion_timestamp, up_votes-down_votes as score FROM `cooked_pies_" . $pie . "discussions`  A "
+			. "LEFT JOIN public_opinions B ON cpd_id = pie_discussion_id and A.approved=1 and B.approved=1 AND which_pie='$which_pie' "
+			. "WHERE for_which_slice='$slice' AND for_or_against='a' GROUP BY cpd_id ORDER BY score DESC LIMIT 2)";
+	//echo $query;		
+	
+	$result = mysql_query($query);
+	
+	$arr_data = null;
+	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		$arr_data[] = $row;
+	}
+	
+	return $arr_data;
+}
+
+
 
 function getAllDiscussionDataForSlice($slice, $for_or_against, $pie) {
 	if($for_or_against == 'f') $for_or_against = 'f';
@@ -736,6 +800,47 @@ function doFilter($filter, $whichPie) {
 function getFullStateName($abbreviation) {
 	require("states.php");
 	return $states[$abbreviation];
+}
+
+function showDiscussionArguments($data_obj) {
+	foreach($data_obj as $data) {
+							if(!isset($data)) {
+								echo "<div style='padding-top:150px;width:100%;text-align:center;font-style:italic;font-size:85%'>none yet</div>";
+								break; //i know, i know...
+							}
+							
+							if($data['evidence_article'] == "")  {
+								$no_evidence_article = true;
+								$evidence_article = "no evidence article provided";
+							}
+							else {
+								$no_evidence_article = false;
+								$evidence_article = "<a href='{$data['evidence_article']}' class='evidence_article' target='_blank'>evidence article</a>";
+							}
+		
+							if($no_evidence_article) $no_evidence_article_formatting = "style='color:#717171'";
+							else { $no_evidence_article_formatting = ""; }
+							
+							echo "<div class='discuss_statement discuss_statement_main_page' {$no_evidence_article_formatting}>
+							<div style='width:93%'>{$data['statement']}
+							<br /><span class='discuss_public_opinion'><i>- {$data['author']} ({$data['city']}, {$data['state']})</i></span>
+							<!--&nbsp;&nbsp;&nbsp;<span style='font-style:italic;font-size:11px;color:#2e52a4'>(<a href='#' id=\"e{$data['cpd_id']}\" class='edit_argument' onclick='return false'><span style='color:#2e52a4'>edit</span></a> &middot; <a href='#' id=\"d{$data['cpd_id']}\" class='delete_argument' onclick='return false'><span style='color:#2e52a4'>delete</span></a>)</span>-->
+							</div>
+							<a href=\"#\" onclick=\"return false\"><img src=\"../images/arrow_up.png\" alt=\"Vote up\" title=\"Vote up\" class=\"vote_statement_up_arrow\" id=\"u{$data['cpd_id']}\" /></a><a href=\"#\" onclick=\"return false\"><img src=\"../images/arrow_down.png\" alt=\"Vote down\" title=\"Vote down\" class=\"vote_statement_down_arrow\" id=\"d{$data['cpd_id']}\" /></a>
+							</div>
+							<div class=\"discuss_comment_toolbox\" {$no_evidence_article_formatting}>{$evidence_article} &middot; <a href=\"#\" onclick=\"return false\" id=\"f{$data['cpd_id']}\" class=\"flag_the_mofo\">flag as inappropriate</a>&nbsp; <!--&middot; <a href=\"#\" onclick=\"return false\" id=\"f{$data['cpd_id']}\" class=\"agree_disagree\">agree/disagree?</a> &middot;--> <img src=\"../images/arrow_up.png\" alt=\"up votes\" title=\"p votes\" style=\"width:10px\" /> <span id=\"upvotes_{$data['cpd_id']}\">{$data['up_votes']}</span> &nbsp;<img src=\"../images/arrow_down.png\" alt=\"down votes\" title=\"down votes\" style=\"width:10px\" /> <span id=\"downvotes_{$data['cpd_id']}\">{$data['down_votes']}</span></div>
+							<div class=\"discuss_public_opinion_container\" {$no_evidence_article_formatting}>Public opinion: &nbsp;&nbsp;&nbsp;<img src=\"../images/plus.png\" /><a href=\"#\" id=\"f{$data['cpd_id']}\" class=\"agree_disagree\" onclick=\"return false\"><span style=\"font-style:italic;font-size:11px;color:#2e52a4\">add yours</span></a>
+							";
+						
+							if($data['opinion_author'] == "") {
+								echo "<div class=\"discuss_public_opinion\"><i>none yet</i></div>";
+							}
+							else {
+								echo "<div id=\"f{$slice}_one_of_the_public_opinions\" class=\"discuss_public_opinion\"><i>{$data['opinion_author']} ({$data['opinion_city']}, {$data['opinion_state']}):</i> {$data['public_opinion']}</div>";
+							}
+						
+							echo "</div>";
+						}
 }
 
 ?>
