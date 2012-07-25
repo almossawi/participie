@@ -1006,7 +1006,7 @@ function assignEventListeners() {
 	$(".agree_disagree").unbind('click').click(function (e) { //unbind first since calling assignEventListeners() again would result in multiple calls to the click function for this element
 		var srcE = e.srcElement ? e.srcElement : e.target;
 		$("#which_discussion_item").val(srcE.id);
-		
+		console.log(e);
 		//clear form
 		$("#public_opinion").val("");
 		$("#author_for_opinion").val("");
@@ -1319,7 +1319,6 @@ function assignEventListeners() {
 		var the_discussion_item= $("#which_discussion_item").val().substr(1); //strip first letter, which says if it's for or against (f,a)
 		//var f_or_a = $("#which_slice").val().charAt(1);
 		//I just need the ID of the statement (from cooked_pie_discussions, cooked_pie_talkingpoints_discussions)
-		
 		var actionMethod = "submitOpinion";	
 		var dataString = 'action=' + actionMethod
 				+ '&pie=' + pie
