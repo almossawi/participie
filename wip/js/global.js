@@ -920,7 +920,8 @@ $(function() {
       backgroundColor: '#f7f7f7',
       border: {
          width: 1,
-         radius: 4
+         radius: 3,
+         color: '#606060'
       },
    },
    position: {

@@ -408,6 +408,8 @@ function submitArgument($post) {
 	$city = htmlentities(strip_tags(trim($post['city'])), ENT_QUOTES, 'UTF-8');
 	$state = htmlentities(strip_tags(trim($post['state'])), ENT_QUOTES, 'UTF-8');
 
+	if($evidence_article == "http://") $evidence_article = "";
+	
 	if(strlen($slice) > 255 || strlen($statement) > 255 
 			|| strlen($author) > 255 || strlen($city) > 255 || strlen($state) > 128) {
 		return null;
