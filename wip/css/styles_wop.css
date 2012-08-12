@@ -326,7 +326,7 @@ img#close {
 #top_nav_bar_not_fixed a,
 .menu_extensions a,
 .menu_extensions {
-	color:#db1818;
+	color:#ff3c22;
 	font-weight:normal;
 	font-style:italic;
 	font-family:Georgia, Italic, Palatino;
@@ -416,6 +416,7 @@ img#close {
 
 #wall_of_pies_content {
 	width:1260px;
+	padding-left:8px;
 	font-size:10pt;
 }
 
@@ -488,6 +489,6 @@ svg.minipie {
 	background-color:white;
 	border:1px solid #cccccc;
 	padding:10px;
-	margin:5px;
+	margin:13px;
 	margin-top:25px;
 }

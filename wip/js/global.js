@@ -21,7 +21,7 @@ function getURLParameter(name) {
 function mouseOnElement(node) {
 	$("#moreinfo_container").html($("#" + node.name + "_moreinfo").val());
 	
-	$("#the_slice_im_on").html(node.label);
+	//$("#the_slice_im_on").html(node.label);
 
 	//$("#receipt").html(setReceiptContent(json_data, d.label));	
 	$(".receipt_line_item").css("font-weight", "normal");
@@ -140,7 +140,7 @@ function updateAveragePies(whichPie, whereGender, whereAge) {
 					//console.log(dataString);	
 		$.ajax({  
 		    type: "GET",  
-			url: "wallofpies_handler.php",  
+			url: "wallofpies_handler.pie",  
 			data: dataString,  
 			success: function(data) {
 				//console.log(data);
@@ -172,7 +172,7 @@ function populateSeeMoreBox(statements_id, f_or_a, which_pie) {
 	statements_id = statements_id.substring(2).toLowerCase();
 	
 	var actionMethod = "populateSeeMoreBox";
-	$.ajax({ url: '../dataaccess/global.php',
+	$.ajax({ url: '../dataaccess/global.pie',
 		data: {action: actionMethod, slice: statements_id, for_or_against: f_or_a, pie: which_pie},
 		type: 'post',
 		//async: false,
@@ -206,7 +206,7 @@ function voteUp(statements_id, whichPie) {
   	}
 	
 	var actionMethod = "voteUp";
-	$.ajax({ url: '../dataaccess/global.php',
+	$.ajax({ url: '../dataaccess/global.pie',
 		data: {action: actionMethod, id: statements_id, pie: whichPie},
 		type: 'post',
 		//async: false,
@@ -250,7 +250,7 @@ function voteDown(statements_id, whichPie) {
   	}
 	
 	var actionMethod = "voteDown";
-	$.ajax({ url: '../dataaccess/global.php',
+	$.ajax({ url: '../dataaccess/global.pie',
 		data: {action: actionMethod, id: statements_id, pie: whichPie},
 		type: 'post',
 		//async: false,
@@ -293,7 +293,7 @@ function flagSubmission(statements_id, whichPie) {
   	}
 
 	var actionMethod = "flagSubmission";
-	$.ajax({ url: '../dataaccess/global.php',
+	$.ajax({ url: '../dataaccess/global.pie',
 		data: {action: actionMethod, id: statements_id, pie: whichPie},
 		type: 'post',
 		//async: false,
@@ -457,7 +457,7 @@ function redraw(data_file) {
 
 				var invalid_pie_from_db = false;
 				
-				$.ajax({ url: '../dataaccess/global.php',
+				$.ajax({ url: '../dataaccess/global.pie',
 		        	data: {action: actionMethod, id: getURLParameter("p")},
 		        	type: 'post',
 		        	async: false,
@@ -515,15 +515,15 @@ function redraw(data_file) {
 				$("#f" + d.name + "_color_proportional").css("width", 80 * (d.size / 100) + "px"); //60px is the real estate we have for each bar, but we'll use 100px
 			}
 
-			if ($.browser.mozilla) {
+			/*if ($.browser.mozilla) {
 				arcs_data = svg.select("#container").data([json_data]).selectAll("g").data(partition_nodes).enter().insert("g").attr("class", "node").attr("visibility", function (d) {
 					return d.depth ? null : "hidden";
 				}) // hide inner ring
-			} else {
+			} else {*/
 				arcs_data = svg.data([json_data]).selectAll("#container").data(partition_nodes).enter().insert("g").attr("class", "node").attr("display", function (d) {
 					return d.depth ? null : "none";
 				}) // hide inner ring
-			}
+			//}
 
 			//draw the arcs for the given dataset and store in variable  
 			path = arcs_data.append("svg:path").attr("d", arc).style("fill", function (d, index) {
@@ -552,7 +552,7 @@ function redraw(data_file) {
 				$("#moreinfo_container").html('Mouse over a budget category to see more info about it here, including the budget functions that it consolidates, if applicable.  Details of the spending for each budget function are from <a href="http://budget.house.gov/BudgetProcess/BudgetFunctions.htm" target="_blank">here</a>.');
 			
 				d3.select(this).style("fill", d.currentColor ? d.currentColor : getColor(d));
-				$("#the_slice_im_on").html("");
+				//$("#the_slice_im_on").html("");
 
 				$("#f" + d.name).css("font-weight", "normal");
 				$("#f" + d.name + "_data").css("background-image", "none").css("font-weight", "normal");
@@ -867,7 +867,6 @@ $(document).ready(function () {
 		}, 3000);
 	}
 
-
 	//enforce maxlength on comment textarea
 	var txts = document.getElementsByTagName('TEXTAREA')
 	for (var i = 0, l = txts.length; i < l; i++) {
@@ -886,57 +885,58 @@ $(document).ready(function () {
 			txts[i].onblur = func;
 		}
 	}
-	
-	//for top bar, on discussion pages, so that it sticks to the top
-	function sticky_relocate() {
-  var window_top = $(window).scrollTop();
-  var div_top = $('#sticky-anchor').offset().top;
-  if (window_top > div_top)
-    $('#sticky').addClass('stick')
-  else
-    $('#sticky').removeClass('stick');
-  }
-// If you have jQuery directly, use the following line, instead
-// $(function() {
-// If you have jQuery via Google AJAX Libraries
-$(function() {
-  $(window).scroll(sticky_relocate);
-  sticky_relocate();
-  });
   
-  //tooltips for evidence article links
-  $('.evidence_article').qtip({
-   content: 'none',
-   api: {
-        beforeShow: function () {
-            this.updateContent($("#tooltip_content").val(), true);
-        }
-   },
-   hide: 'mouseout',
-   style: { 
-   	  fontSize:12,
-      tip: 'bottomMiddle',
-      name: 'light',
-      backgroundColor: '#f7f7f7',
-      border: {
-         width: 1,
-         radius: 3,
-         color: '#606060'
-      },
-   },
-   position: {
-      corner: {
-         target: 'topMiddle',
-         tooltip: 'bottomMiddle'
-      }
-   },
-   show: {
-      delay:0,
-      when: { event: 'mouseover' }
-   }
-})
+	//stick top bar to top of window
+	if($("#sticky").length) {
+		$(window).scroll(sticky_relocate);
+		sticky_relocate();
+	}
+		
+	//tooltips for evidence article links on discussion page
+	if(typeof($('.evidence_article').qtip) != "undefined") {
+	  $('.evidence_article').qtip({
+		content:'none',
+		api: {
+			beforeShow: function () {
+			this.updateContent($("#tooltip_content").val(), true);
+			}
+		},
+		hide: 'mouseout',
+		style: { 
+			color:'white',
+			fontSize:'9pt',
+			tip:'bottomMiddle',
+			name:'light',
+			backgroundColor:'#2e2e2e',
+			border: {
+				width:1,
+				radius:4,
+				color:'#2e2e2e'
+			},
+		},
+		position: {
+			corner: {
+			target:'topMiddle',
+			tooltip:'bottomMiddle'
+			}
+		},
+		show: {
+			delay:0,
+			when: { event:'mouseover' }
+		}
+	})
+  }
 });
 
+//for top bar, on discussion pages, so that it sticks to the top
+function sticky_relocate() {
+	var window_top = $(window).scrollTop();
+	var div_top = $('#sticky-anchor').offset().top;
+	if (window_top > div_top)
+		$('#sticky').addClass('stick')
+	else
+		$('#sticky').removeClass('stick');
+}
 
 //Adjust height of overlay to fill screen when browser gets resized  
 $(window).bind("resize", function () {
@@ -950,7 +950,7 @@ $(window).bind("resize", function () {
 		var dataString = 'filter=' + $("#show_filter").val();
 		$.ajax({
 			type: "POST",
-			url: "wallofpies_handler.php",
+			url: "wallofpies_handler.pie",
 			data: dataString,
 			success: function (data) {
 				$("#allpies").hide().html(data).fadeIn("slow");
@@ -965,7 +965,7 @@ $(window).bind("resize", function () {
  **/
 function assignEventListeners() {
 	/*$(".fb-login-button").unbind('click').click(function (e) {
-		//this is already captured in the function in discuss.php
+		//this is already captured in the function in discuss.pie
 		//FB.login(function(response) {
 		//	FB.api('/me', function(response) {
 		//	  $("#fb-location").html(response.location.name);
@@ -1143,6 +1143,14 @@ function assignEventListeners() {
 	});
 
 	$(".dim").unbind('click').click(function (e) {
+		//pause any playing videos
+		if(typeof($f) != 'undefined') {
+			$('iframe').each(function () {
+				$f($(this).get(0)).api('pause');
+			});	
+		}
+		
+		
 		$("#intro_box").fadeOut();
 		$("#submission_box").fadeOut();
 		$("#video_box").fadeOut();
@@ -1160,8 +1168,14 @@ function assignEventListeners() {
 	});
 
 	$("#close_video_box").unbind('click').click(function (e) {
+		//pause the video
+		$('iframe').each(function () {
+			$f($(this).get(0)).api('pause');
+		});	
+		
 		$("#video_box").fadeOut();
 		$(".dim").fadeOut();
+		
 	});
 	
 	$("#close_seemore_box").unbind('click').click(function (e) {
@@ -1208,7 +1222,7 @@ function assignEventListeners() {
 		var dataString = 'filter=' + filter;
 		$.ajax({
 			type: "POST",
-			url: "wallofpies_handler.php",
+			url: "wallofpies_handler.pie",
 			data: dataString,
 			success: function (data) {
 				$("#allpies").html(data); //replace pies with new pies' data
@@ -1270,7 +1284,7 @@ function assignEventListeners() {
 				+ '&city=' + $("#city_for_argument").val() 
 				+ '&state=' + $("#state_for_argument").val();
 		
-		$.ajax({ url: '../dataaccess/global.php',
+		$.ajax({ url: '../dataaccess/global.pie',
 			data: dataString,
 			type: 'post',
 			success: function (output) {console.log(output);
@@ -1329,7 +1343,7 @@ function assignEventListeners() {
 				+ '&city=' + $("#city_for_opinion").val() 
 				+ '&state=' + $("#state_for_opinion").val();
 		
-		$.ajax({ url: '../dataaccess/global.php',
+		$.ajax({ url: '../dataaccess/global.pie',
 			data: dataString,
 			type: 'post',
 			success: function (output) {console.log(output);
@@ -1400,7 +1414,7 @@ function assignEventListeners() {
 			
 		$.ajax({
 			type: "POST",
-			url: "addpie.php",
+			url: "addpie.pie",
 			data: dataString,
 			success: function (data) {
 				var pie_category;
@@ -1422,7 +1436,7 @@ function assignEventListeners() {
 					var twitter_content = '<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + permalink_decoded + '" data-text="Check out the pie I made on Participie.com!" data-count="none">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
 					$(".twitter").html(twitter_content);
 					
-					var facebook_content = "<iframe src='//www.facebook.com/plugins/like.php?href=" + permalink + "&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21&amp;appId=310995648970748' scrolling='no' frameborder='0' style='border:none; overflow:hidden; width:100px; height:21px;' allowTransparency='true'></iframe>";
+					var facebook_content = "<iframe src='//www.facebook.com/plugins/like.pie?href=" + permalink + "&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21&amp;appId=310995648970748' scrolling='no' frameborder='0' style='border:none; overflow:hidden; width:100px; height:21px;' allowTransparency='true'></iframe>";
 					$(".facebook").html(facebook_content);
 					
 					var linkedin_content = "<script src='http://platform.linkedin.com/in.js' type='text/javascript'></script><script type='IN/Share' data-url='" + permalink + "'></script>";

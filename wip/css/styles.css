@@ -817,7 +817,7 @@ h2 {
 	margin-top:35px;
 	padding:12px;
 	float:left;
-	border:2px solid #989998;
+	border:1px solid #cfcfc6;
 	background-color:white;
 	width:450px;
 	position:absolute;
@@ -829,7 +829,7 @@ h2 {
 	padding:12px;
 	margin-left:520px;
 	float:right;
-	border:2px solid #989998;
+	border:1px solid #cfcfc6;
 	background-color:white;
 	width:450px;
 	height:440px;
@@ -898,6 +898,17 @@ h2 {
 	float:right;
 	display:block;
 	clear:both;
+}
+
+#nonsticky_topbar {
+	width:1310px;
+	position:fixed:
+	top:0;
+	left:0;
+	background-color:#222222;
+	height:80px;
+	padding:0;
+	margin:0;
 }
 
 #sticky {
@@ -969,4 +980,38 @@ h2 {
 	background-color:#ededed;
 }
 
+.raquo {
+	font-size:110%;
+	font-weight:bold;
+	color:#d81717;
+}
 
+#page_container {
+	position:relative;
+	top:80px;
+	width:800px;
+	height:470px;
+	background-color:white;
+	border:0px solid #cccccc;
+	text-align:left;
+	padding:10px;
+}
+
+.page_title {
+	margin-top:0;
+	font-size:23px;
+	color:#2e2e2e;
+	font-weight:bold;
+}
+
+.page_content {
+	font-size:15px;
+	color:#2e2e2e;
+	margin-bottom:20px;
+	padding-bottom:20px;
+}
+
+.bakery_pie_name {
+	margin-bottom:3px;
+	padding-bottom:3px;
+}
