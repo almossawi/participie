@@ -192,7 +192,7 @@ function populateSeeMoreBox(statements_id, f_or_a, which_pie) {
 	});
 }
 
-function voteUp(statements_id, whichPie) {
+function voteUp(statements_id, whichPie) {		
 	//strip first letter (will be either u=up or d=down)
 	statements_id = statements_id.substring(1);
 	
@@ -204,10 +204,11 @@ function voteUp(statements_id, whichPie) {
 		alert("Thanks for already voting!");
 		return false;
   	}
-	
+  	
+	var the_discussion_item= $("#which_discussion_item").val().substr(1); //strip first letter, which says if it's for or against (f,a)
 	var actionMethod = "voteUp";
 	$.ajax({ url: '../dataaccess/global.pie',
-		data: {action: actionMethod, id: statements_id, pie: whichPie},
+		data: {action: actionMethod, id: statements_id, pie: whichPie, discussion_item_id: the_discussion_item},
 		type: 'post',
 		//async: false,
 		success: function(output) {
@@ -249,9 +250,10 @@ function voteDown(statements_id, whichPie) {
 		return false;
   	}
 	
+	var the_discussion_item= $("#which_discussion_item").val().substr(1); //strip first letter, which says if it's for or against (f,a)
 	var actionMethod = "voteDown";
 	$.ajax({ url: '../dataaccess/global.pie',
-		data: {action: actionMethod, id: statements_id, pie: whichPie},
+		data: {action: actionMethod, id: statements_id, pie: whichPie, discussion_item_id: the_discussion_item},
 		type: 'post',
 		//async: false,
 		success: function(output) {
@@ -1026,6 +1028,8 @@ function assignEventListeners() {
 		
 	$(".vote_statement_up_arrow").unbind('click').click(function (e) {
 		var srcE = e.srcElement ? e.srcElement : e.target;
+		$("#which_discussion_item").val(srcE.id);
+	
 		var whichPie = '';
 		if(data_file_to_load == "data_files/data-talkingpoints.json") whichPie = "talkingpoints";
 		else if(data_file_to_load == "data_files/data-2012.json") whichPie = "federalbudget";
@@ -1035,6 +1039,8 @@ function assignEventListeners() {
 	
 	$(".vote_statement_down_arrow").unbind('click').click(function (e) {
 		var srcE = e.srcElement ? e.srcElement : e.target;
+		$("#which_discussion_item").val(srcE.id);
+		
 		var whichPie = '';
 		if(data_file_to_load == "data_files/data-talkingpoints.json") whichPie = "talkingpoints";
 		else if(data_file_to_load == "data_files/data-2012.json") whichPie = "federalbudget";
