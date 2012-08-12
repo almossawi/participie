@@ -198,7 +198,7 @@ require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.pie");
 			<div class="content">
 				<div id="loading">Loading...</div>
 			</div>
-			<div id="sunburst_container" style="visibility:hidden">
+			<div id="sunburst_container" style="visibility:hidden;z-index:-1">
 			</div>
 		</div>
 
