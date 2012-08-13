@@ -1,7 +1,7 @@
 <?php	
 session_start();
 
-require_once("/var/www/vhosts/participie.com/httpdocs/config.pie");
+require_once(dirname(__FILE__)."/../config.pie");
 
 if(isset($_POST)) {
 	$politics = htmlentities(strip_tags(trim($_POST['politics'])), ENT_QUOTES, 'UTF-8');

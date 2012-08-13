@@ -1,7 +1,7 @@
 <?php
 session_start();
-require("/var/www/vhosts/participie.com/httpdocs/config.pie");
-require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.pie");
+require(dirname(__FILE__)."/../config.pie");
+require(dirname(__FILE__)."/../dataaccess/global.pie");
 
 if(isset($_GET['loadmore'])) {
 	//get all pies, limit to $_GET['loadmore'];

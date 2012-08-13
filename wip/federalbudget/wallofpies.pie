@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require("/var/www/vhosts/participie.com/httpdocs/config.pie");
-require("/var/www/vhosts/participie.com/httpdocs/wip/dataaccess/global.pie");
+require(dirname(__FILE__)."/../config.pie");
+require(dirname(__FILE__)."/../dataaccess/global.pie");
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"

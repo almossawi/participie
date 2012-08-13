@@ -1123,7 +1123,7 @@ function assignEventListeners() {
 	});
 
 	$("select").unbind('click').click(function (e) {
-		$("#hovered_over_node").fadeOut("slow");
+		$("#hovered_over_node").fadeOut("fast");
 	});
 
 
@@ -1144,8 +1144,8 @@ function assignEventListeners() {
 	});
 
 	$("#close").unbind('click').click(function (e) {
-		$("#intro_box").fadeOut();
-		$(".dim").fadeOut();
+		$("#intro_box").fadeOut("fast");
+		$(".dim").fadeOut("fast");
 	});
 
 	$(".dim").unbind('click').click(function (e) {
@@ -1157,20 +1157,20 @@ function assignEventListeners() {
 		}
 		
 		
-		$("#intro_box").fadeOut();
-		$("#submission_box").fadeOut();
-		$("#video_box").fadeOut();
-		$("#add_argument_box").fadeOut();
-		$("#add_opinion_box").fadeOut();
-		$("#seemore_box").fadeOut("slow", function() {
+		$("#intro_box").fadeOut("fast");
+		$("#submission_box").fadeOut("fast");
+		$("#video_box").fadeOut("fast");
+		$("#add_argument_box").fadeOut("fast");
+		$("#add_opinion_box").fadeOut("fast");
+		$("#seemore_box").fadeOut("fast", function() {
 			$("#seemore_box").html("");
 		});
-		$(".dim").fadeOut();
+		$(".dim").fadeOut("fast");
 	});
 
 	$("#close_overlayed").unbind('click').click(function (e) {
-		$("#submission_box").fadeOut();
-		$(".dim").fadeOut();
+		$("#submission_box").fadeOut("fast");
+		$(".dim").fadeOut("fast");
 	});
 
 	$("#close_video_box").unbind('click').click(function (e) {
@@ -1179,8 +1179,8 @@ function assignEventListeners() {
 			$f($(this).get(0)).api('pause');
 		});	
 		
-		$("#video_box").fadeOut();
-		$(".dim").fadeOut();
+		$("#video_box").fadeOut("fast");
+		$(".dim").fadeOut("fast");
 		
 	});
 	
@@ -1188,17 +1188,17 @@ function assignEventListeners() {
 		$("#seemore_box").fadeOut("slow", function() {
 			$("#seemore_box").html("");
 		});
-		$(".dim").fadeOut();
+		$(".dim").fadeOut("fast");
 	});
 	
 	$("#close_add_argument_box").unbind('click').click(function (e) {
-		$("#add_argument_box").fadeOut();
-		$(".dim").fadeOut();
+		$("#add_argument_box").fadeOut("fast");
+		$(".dim").fadeOut("fast");
 	});
 	
 	$("#close_add_opinion_box").unbind('click').click(function (e) {
-		$("#add_opinion_box").fadeOut();
-		$(".dim").fadeOut();
+		$("#add_opinion_box").fadeOut("fast");
+		$(".dim").fadeOut("fast");
 	});
 
 	$("#submit_load_button").unbind('click').click(function (e) {
