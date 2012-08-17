@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<title>Participie</title>
+		
+		<?php require('includes/header.pie'); ?>
+	</head>
+	
+	<body style="background-image:none;background-color:#e6e6dc;background-position:50% 4px">
+		<div style="width:100%;position:absolute:top:0;left:0;background-color:#222222;height:80px;padding:0;margin:0">
+			<a href="index.pie"><img src="images/logo.png" style="position:absolute;left:2px;top:2px;border:0" /></a>
+			
+			<!--<a href="http://www.mit.edu"><img src="images/mit_logo.png" style="position:absolute;right:80px;top:30px;border:0;z-index:999;height:30px" alt="MIT" title="MIT" /></a>
+			<a href="http://macroconnections.media.mit.edu"><img src="images/macroconnections_logo.png" style="position:absolute;right:180px;top:20px;border:0;z-index:999;height:45px" alt="Macro Connections" title="Macro Connections" /></a>-->
+
+			<div id="top_nav_bar_not_fixed">
+				<!--<a href="http://www.mit.edu"><img src="/images/mit_logo.png" style="position:absolute;right:90px;top:-20px;border:0;z-index:999;height:30px" alt="MIT" title="MIT" /></a>
+				<a href="http://macroconnections.media.mit.edu"><img src="/images/macroconnections_logo.png" style="position:absolute;right:190px;top:-30px;border:0;z-index:999;height:45px" alt="Macro Connections" title="Macro Connections" /></a>-->
+				<?php require('includes/menu.pie'); ?>
+			</div>
+		
+			<a href="bakery.pie"><img src="images/pies.png" style="position:absolute;right:30px;top:80px;border:0;z-index:999" alt="The bakery" title="The bakery" /></a>
+		</div>
+		
+		<img src="images/waitress.png" style="position:absolute;left:-70px;top:90px" alt="Mmmm...Pie" />
+		
+		<div style="width:800px;height:400px;margin-left:-400px;margin-top:-175px;left:50%;top:30%;position:absolute;text-align:center;border:0px solid black">
+			<div style="position:absolute;left:0;top:100px">
+				<div class="corner" style="position:relative;top:50px;width:800px;height:770px;background-color:white;border:0px solid #cccccc;text-align:left;padding:10px">
+					<p class="page_title"><strong>The Participie statement</strong></p>
+					<p>Would democracy be any different if Benjamin Franklin, Thomas Jefferson and John Adams had been online geeks?
+					<p>As with most historical hypotheticals, we will never know. We are in 2012, however, and despite the Internet, most countries are still stuck in one-bit democracies, where people are required to choose between two choices every four to six years.</p>
+					<p>People, however, do not appear to be extremely happy with the outcomes of one-bit democracies. One-bit democracies have important design limitations. For example, their requirement to choose candidates, rather than issues, focuses the little bandwidth available in the political system on candidates’ personas, rather than on relevant issues.</p>
+					<p>This time around, however, technology is ready to provide alternatives. The web is the ideal media to handle a large number of discussions, about different issues, in an asynchronous and decentralized manner. The web is the technological vehicle that democracy had always been waiting for, if we give it a little push.</p>
+					<p>We need direct online participation because people tend to own the decisions that they make, more than the decisions that are made for them by those whom they have chosen to represent them. Direct forms of online participation will not only empower people with the power to decide, but will also help transfer the political responsibility of their decisions back to them.</p>
+					<p>Participie is a small design effort started by Ali Almossawi and Cesar A. Hidalgo as a course project at The MIT Media Lab. It is our modest attempt to start discovering what designs work and how to create active communities around them.</p>
+					<p>To make direct participation work, we need your participation. In this first release we are making available two questions. “How should the Federal Budget be distributed?” and “What should Obama and Romney clarify their positions about?“ We hope that you enjoy our little experiment, and we hope to grow together with your clicks and comments!</p>
+					<p>Looking forward to your participation!</p>
+					<p style="font-style:italic;padding-top:15px">All the best!</p>
+					<p style="font-style:italic">Ali Almossawi and César A. Hidalgo</p>
+				</div>
+					
+				<?php require('includes/footer.pie'); ?>
+
+			</div>
+			
+			<div class="dim"></div>
+			<script src="js/jquery.corner.js" type="text/javascript"></script>
+			<script src="js/global.js" type="text/javascript"></script>
+	</body>
+</html>

@@ -1,0 +1,4 @@
+ <div style="position:absolute;width:100%;margin-top:60px;height:30px;font-size:12px;padding:8px;text-align:center">
+	<a href="index.pie">Home</a> &middot; <a href="bakery.pie">The bakery</a> &middot; <a href="/blog">Blog</a> &middot; <a href="about.pie">About us</a> &middot; <a href="privacy.pie">Privacy</a><br />
+	<span style="font-size:90%">Copyright 2012 Macro Connections, <a href="http://media.mit.edu/">MIT Media Lab</a></span>
+</div>

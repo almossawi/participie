@@ -615,7 +615,7 @@ function pagelines_cred(){
 		
 	}*/
 	
-	echo '<div style="display:block;position:relative;width:100%;margin-top:0px;height:30px;font-size:12px;padding:8px;text-align:center;color:#222222"><span style="font-size:90%">Copyright 2012 Macro Connections Group, MIT</span></div>';
+	echo '<div style="display:block;position:relative;width:100%;margin-top:0px;height:30px;font-size:12px;padding:8px;text-align:center;color:#222222"><span style="font-size:90%">Copyright 2012 Macro Connections, <a href="http://media.mit.edu/" style="color:#4b4b4b">MIT Media Lab</a></span></div>';
 
 }
 
